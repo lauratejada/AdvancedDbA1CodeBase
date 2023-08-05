@@ -4,15 +4,16 @@
     {
         public int Id { get; set; }
         
-        public string _name;
+        private string _name;
         
         public string Name { get => _name;
             set
             {
-                if (string.IsNullOrEmpty(value) || value.Length < 3 )
+                if (string.IsNullOrEmpty(value) || value.Length < 2 )
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Brand name must be at least three characters in length.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Brand name must be at least two characters in length.");
                 }
+                _name = value;
             }
         }
 

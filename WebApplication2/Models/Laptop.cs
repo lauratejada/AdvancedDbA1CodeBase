@@ -13,10 +13,11 @@ namespace WebApplication2.Models
             get => _model;
             set
             {
-                if (string.IsNullOrEmpty(value) || value.Length < 3)
+                if (string.IsNullOrEmpty(value) || value.Length < 2)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Laptop model name must be at least three characters in length.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Laptop model name must be at least two characters in length.");
                 }
+                _model = value;
             }
         }
 
@@ -39,6 +40,13 @@ namespace WebApplication2.Models
         public int BrandId { get; set; }
         
         public Brand Brand { get; set; }
+
+        public HashSet<StoreLaptop> StoresLaptops { get; set; }
+
+        public Laptop() 
+        {
+            this.StoresLaptops = new HashSet<StoreLaptop>();
+        }
     }
 
     public enum LaptopCondition
